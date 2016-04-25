@@ -1,0 +1,40 @@
+<References xmlns="http://xmlns.oracle.com/adf/jndi">
+  <Reference name="MyOrderAppAuth" className="oracle.adf.model.connection.adfmf.LoginConnection"
+             adfCredentialStoreKey="MyOrderAppAuth" partial="false" manageInOracleEnterpriseManager="true"
+             deployable="true" xmlns="">
+    <Factory className="oracle.adf.model.connection.adfmf.LoginConnectionFactory"/>
+    <RefAddresses>
+      <XmlRefAddr addrType="adfmfLogin">
+        <Contents>
+          <login url="https://10.118.37.123:7005/OrderServiceApp/faces/Home.jspx"/>
+          <logout url="https://10.118.37.123:7005/OrderServiceApp/faces/Home.jspx"/>
+          <authenticationMode value="hybrid"/>
+          <idleTimeout value="28800"/>
+          <sessionTimeout value="28800"/>
+          <maxFailuresBeforeCredentialCleared value="3"/>
+          <rememberCredentials>
+            <enableRememberUserName value="true"/>
+            <rememberUserNameDefault value="true"/>
+            <enableRememberPassword value="true"/>
+            <rememberPasswordDefault value="true"/>
+            <enableStayLoggedIn value="true"/>
+            <stayLoggedInDefault value="true"/>
+          </rememberCredentials>
+          <accessControl/>
+          <userObjectFilter/>
+        </Contents>
+      </XmlRefAddr>
+    </RefAddresses>
+  </Reference>
+  <Reference name="OSBService" className="oracle.adf.model.connection.rest.RestConnection"
+             adfCredentialStoreKey="MyOrderAppAuth" xmlns="">
+    <Factory className="oracle.adf.model.connection.rest.RestConnectionFactory"/>
+    <RefAddresses>
+      <XmlRefAddr addrType="OSBService">
+        <Contents>
+          <restconnection name="OSBService" url="https://ussltcsnl3432.solutions.glbsnet.com:7002"/>
+        </Contents>
+      </XmlRefAddr>
+    </RefAddresses>
+  </Reference>
+</References>

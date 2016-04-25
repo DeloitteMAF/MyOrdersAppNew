@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.2.1" id="OrderLinesPageDef"
+                Package="com.company.myorders.mobile.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="OrdersService" id="OrdersServiceIterator"/>
+    <accessorIterator MasterBinding="OrdersServiceIterator" Binds="orders" RangeSize="25" DataControl="OrdersService"
+                      BeanClass="com.company.myorders.mobile.model.Orders" id="ordersIterator"/>
+    <accessorIterator MasterBinding="ordersIterator" Binds="xxMyOrderDetailsVO" RangeSize="25"
+                      DataControl="OrdersService" BeanClass="com.company.myorders.mobile.model.OrderDetails"
+                      id="xxMyOrderDetailsVOIterator"/>
+    <iterator Binds="root" RangeSize="25" DataControl="AllOrdersService" id="AllOrdersServiceIterator"/>
+    <accessorIterator MasterBinding="AllOrdersServiceIterator" Binds="allOrders" RangeSize="25"
+                      DataControl="AllOrdersService" BeanClass="com.company.myorders.mobile.model.AllOrders"
+                      id="allOrdersIterator"/>
+    <accessorIterator MasterBinding="allOrdersIterator" Binds="xxMyOrderDetailsVO" RangeSize="25"
+                      DataControl="AllOrdersService" BeanClass="com.company.myorders.mobile.model.AllOrderDetails"
+                      id="xxMyOrderDetailsVOIterator1"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="ordersIterator" id="orderNumber">
+      <AttrNames>
+        <Item Value="orderNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="allOrdersIterator" id="orderNumber1">
+      <AttrNames>
+        <Item Value="orderNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="xxMyOrderDetailsVOIterator" id="xxMyOrderDetailsVO">
+      <nodeDefinition DefName="com.company.myorders.mobile.model.OrderDetails" Name="xxMyOrderDetailsVO0">
+        <AttrNames>
+          <Item Value="orderedItem"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="xxMyOrderDetailsVOIterator1" id="xxMyOrderDetailsVO1">
+      <nodeDefinition DefName="com.company.myorders.mobile.model.AllOrderDetails" Name="xxMyOrderDetailsVO10">
+        <AttrNames>
+          <Item Value="orderedItem"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="xxMyOrderDetailsVOIterator" id="lineTotal">
+      <AttrNames>
+        <Item Value="lineTotal"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="xxMyOrderDetailsVOIterator" id="orderQuantityUom">
+      <AttrNames>
+        <Item Value="orderQuantityUom"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="xxMyOrderDetailsVOIterator" id="shippedQuantity">
+      <AttrNames>
+        <Item Value="shippedQuantity"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="xxMyOrderDetailsVOIterator" id="backorderQuantity">
+      <AttrNames>
+        <Item Value="backorderQuantity"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="xxMyOrderDetailsVOIterator" id="freightCode">
+      <AttrNames>
+        <Item Value="freightCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="xxMyOrderDetailsVOIterator" id="actualArrivalDate">
+      <AttrNames>
+        <Item Value="actualArrivalDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="xxMyOrderDetailsVOIterator" id="orderedItem">
+      <AttrNames>
+        <Item Value="orderedItem"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="xxMyOrderDetailsVOIterator" id="unitSellingPrice">
+      <AttrNames>
+        <Item Value="unitSellingPrice"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="xxMyOrderDetailsVOIterator" id="description">
+      <AttrNames>
+        <Item Value="description"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="xxMyOrderDetailsVOIterator" id="shipToContact">
+      <AttrNames>
+        <Item Value="shipToContact"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="xxMyOrderDetailsVOIterator" id="address">
+      <AttrNames>
+        <Item Value="address"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="xxMyOrderDetailsVOIterator" id="orderedQuantity">
+      <AttrNames>
+        <Item Value="orderedQuantity"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="xxMyOrderDetailsVOIterator" id="shippingQuantityUom">
+      <AttrNames>
+        <Item Value="shippingQuantityUom"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="xxMyOrderDetailsVOIterator1" id="unitSellingPrice1">
+      <AttrNames>
+        <Item Value="unitSellingPrice"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="xxMyOrderDetailsVOIterator1" id="orderedItem1">
+      <AttrNames>
+        <Item Value="orderedItem"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="xxMyOrderDetailsVOIterator1" id="description1">
+      <AttrNames>
+        <Item Value="description"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="xxMyOrderDetailsVOIterator1" id="lineTotal1">
+      <AttrNames>
+        <Item Value="lineTotal"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="xxMyOrderDetailsVOIterator1" id="orderQuantityUom1">
+      <AttrNames>
+        <Item Value="orderQuantityUom"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="xxMyOrderDetailsVOIterator1" id="shippedQuantity1">
+      <AttrNames>
+        <Item Value="shippedQuantity"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="xxMyOrderDetailsVOIterator1" id="shippingQuantityUom1">
+      <AttrNames>
+        <Item Value="shippingQuantityUom"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="xxMyOrderDetailsVOIterator1" id="backorderQuantity1">
+      <AttrNames>
+        <Item Value="backorderQuantity"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="xxMyOrderDetailsVOIterator1" id="freightCode1">
+      <AttrNames>
+        <Item Value="freightCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="xxMyOrderDetailsVOIterator1" id="actualArrivalDate1">
+      <AttrNames>
+        <Item Value="actualArrivalDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="xxMyOrderDetailsVOIterator1" id="orderedQuantity1">
+      <AttrNames>
+        <Item Value="orderedQuantity"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="xxMyOrderDetailsVOIterator1" id="shipToContact1">
+      <AttrNames>
+        <Item Value="shipToContact"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="xxMyOrderDetailsVOIterator1" id="address1">
+      <AttrNames>
+        <Item Value="address"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

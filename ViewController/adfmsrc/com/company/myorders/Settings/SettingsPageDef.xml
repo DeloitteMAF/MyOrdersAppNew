@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.13.26" id="SettingsPageDef"
+                Package="com.company.myorders.Settings">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables">
+      <variable Name="location" Type="java.lang.String"/>
+    </variableIterator>
+    <iterator Binds="root" RangeSize="25" DataControl="OrdersService" id="OrdersServiceIterator"/>
+    <accessorIterator id="ordersIterator" MasterBinding="OrdersServiceIterator" Binds="orders" RangeSize="25"
+                      DataControl="OrdersService" BeanClass="com.company.myorders.mobile.model.Orders"/>
+    <iterator Binds="root" RangeSize="25" DataControl="ResultService" id="ResultServiceIterator"/>
+    <accessorIterator id="resultIterator" MasterBinding="ResultServiceIterator" Binds="result" RangeSize="-1"
+                      DataControl="ResultService" BeanClass="com.company.myorders.mobile.model.Result"/>
+  </executables>
+  <bindings>
+    <list StaticList="false" IterBinding="ordersIterator" ListIter="resultIterator" id="partyName" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject">
+      <AttrNames>
+        <Item Value="partyName"/>
+      </AttrNames>
+      <ListAttrNames>
+        <Item Value="locationCode"/>
+      </ListAttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="locationFullName"/>
+      </ListDisplayAttrNames>
+    </list>
+    <tree IterBinding="resultIterator" id="result">
+      <nodeDefinition DefName="com.company.myorders.mobile.model.Result" Name="result0">
+        <AttrNames>
+          <Item Value="locationFullName"/>
+          <Item Value="locationCode"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findResult" RequiresUpdateModel="true" Action="invokeMethod" MethodName="findResult"
+                  IsViewObjectMethod="false" DataControl="ResultService" InstanceName="data.ResultService.dataProvider">
+      <NamedData NDName="searchValue" NDValue="${viewScope.searchString}" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="resetFeature" RequiresUpdateModel="true" Action="invokeMethod" MethodName="resetFeature"
+                  IsViewObjectMethod="false" DataControl="ApplicationFeatures"
+                  InstanceName="data.ApplicationFeatures.dataProvider">
+      <NamedData NDName="fid" NDValue="com.company.myorders.Orders" NDType="java.lang.String"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

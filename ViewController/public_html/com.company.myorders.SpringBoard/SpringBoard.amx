@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+  <amx:panelPage id="sbpp1" inlineStyle="background-color:#ECECEC;">
+    <amx:commandLink id="cl3" styleClass="remove_ul">
+      <amx:panelGroupLayout id="pgl1">
+        <amx:tableLayout id="tl2" width="100%" layout="weighted" halign="center">
+          <amx:rowLayout id="rl1">
+            <amx:cellFormat id="cf1"
+                            inlineStyle="background-image:none; background-color:#1ebe92; min-height:15%; text-wrap:none;"
+                            columnSpan="1" rowSpan="1" valign="middle" halign="center">
+              <amx:spacer id="s6" height="25"/>
+              <amx:panelGroupLayout id="pgl2" layout="vertical" halign="center" valign="middle">
+              <amx:outputText value="#{bindings.partyName.inputValue}" id="ot1" styleClass="sbheader"/>
+              <amx:outputText value="Customer Id: #{securityContext.userName}" id="ot4" styleClass="sbheader1"/>
+               </amx:panelGroupLayout>
+              <amx:spacer id="s2" height="25"/>
+            </amx:cellFormat>
+          </amx:rowLayout>
+        </amx:tableLayout>
+      </amx:panelGroupLayout>
+      <amx:tableLayout id="tl1" width="100%" layout="fixed" inlineStyle="background-color:#D7D7DA;">
+        <amx:rowLayout id="rl4">
+          <amx:cellFormat id="cf5" width="20%" valign="middle" halign="center">
+            <amx:spacer id="s1" height="#{applicationScope.OrdersManagedBean.sbRowSpacer}"/>
+            <amx:image id="i3" source="/resources/css/images/My orders.png" styleClass="sbimages"
+                       inlineStyle="paddin-left:20%;"/>
+            <amx:spacer id="s3" height="#{applicationScope.OrdersManagedBean.sbRowSpacer}"/>
+          </amx:cellFormat>
+          <amx:cellFormat id="cf6" width="80%" halign="start">
+            <amx:commandLink id="cl2" actionListener="#{bindings.resetFeature.execute}"
+                             inlineStyle="height:80%" styleClass="remove_ul">
+              <amx:outputText value="My Orders" id="ot3" inlineStyle="padding-left:10%"/>
+                  <amx:setPropertyListener id="spl2" from="#{'false'}"
+                                           to="#{applicationScope.OrdersManagedBean.springBoardStatus}" type="action"/>
+                  <amx:setPropertyListener id="spl3" to="#{pageFlowScope.FeatureId}" type="action"
+                                           from="com.company.myorders.Orders"/>
+                <amx:actionListener id="al2" binding="#{SlidingDrawerBean.leftPin}"/>
+            </amx:commandLink>
+          </amx:cellFormat>
+        </amx:rowLayout>
+        <amx:rowLayout id="rl3">
+          <amx:cellFormat id="cf4" width="20%" valign="middle" halign="center" inlineStyle="background-color:#ECECEC;">
+            <amx:spacer id="s7" height="#{applicationScope.OrdersManagedBean.sbRowSpacer}"/>
+            <amx:image id="i2" source="/resources/css/images/My transactions.png" styleClass="sbimages"
+                       inlineStyle="paddin-left:20%;"/>
+            <amx:spacer id="s8" height="#{applicationScope.OrdersManagedBean.sbRowSpacer}"/>
+          </amx:cellFormat>
+          <amx:cellFormat id="cf7" width="80%" halign="start" inlineStyle="background-color:#ECECEC;">
+            <amx:commandLink id="cl4"
+                             inlineStyle="height:80%" styleClass="remove_ul">
+              <amx:outputText value="My Transactions" id="ot5" inlineStyle="padding-left:10%"/>
+                  <!--<amx:setPropertyListener id="spl8" from="#{'false'}"
+                                           to="#{applicationScope.OrdersManagedBean.springBoardStatus}" type="action"/>
+                  <amx:setPropertyListener id="spl7" to="#{pageFlowScope.FeatureId}" type="action"
+                                           from="{'com.company.myorders.Orders'}"/>-->
+            </amx:commandLink>
+          </amx:cellFormat>
+        </amx:rowLayout>
+        <amx:rowLayout id="rl7">
+          <amx:cellFormat id="cf12" width="20%" valign="middle" halign="center">
+            <amx:spacer id="s13" height="#{applicationScope.OrdersManagedBean.sbRowSpacer}"/>
+            <amx:image id="i6" source="/resources/css/images/My alerts.png" styleClass="sbimages"
+                       inlineStyle="paddin-left:20%;"/>
+            <amx:spacer id="s14" height="#{applicationScope.OrdersManagedBean.sbRowSpacer}"/>
+          </amx:cellFormat>
+          <amx:cellFormat id="cf13" width="80%" halign="start">
+            <amx:commandLink id="cl7"
+                             inlineStyle="height:80%" styleClass="remove_ul">
+              <amx:outputText value="My Alerts" id="ot8" inlineStyle="padding-left:10%"/>
+                  <!--<amx:setPropertyListener id="spl6" from="#{'false'}"
+                                           to="#{applicationScope.OrdersManagedBean.springBoardStatus}" type="action"/>
+                  <amx:setPropertyListener id="spl5" to="#{pageFlowScope.FeatureId}" type="action"
+                                           from="{'com.company.myorders.Orders'}"/>-->
+            </amx:commandLink>
+          </amx:cellFormat>
+        </amx:rowLayout>
+        <amx:rowLayout id="rl9">
+          <amx:cellFormat id="cf16" width="20%" valign="middle" halign="center" inlineStyle="background-color:#ECECEC;">
+            <amx:spacer id="s17" height="#{applicationScope.OrdersManagedBean.sbRowSpacer}"/>
+            <amx:image id="i8" source="/resources/css/images/Settings.png" styleClass="sbimages"
+                       inlineStyle="paddin-left:20%;"/>
+            <amx:spacer id="s18" height="#{applicationScope.OrdersManagedBean.sbRowSpacer}"/>
+          </amx:cellFormat>
+          <amx:cellFormat id="cf17" width="80%" halign="start" inlineStyle="background-color:#ECECEC;">
+            <amx:commandLink id="cl9" actionListener="#{bindings.resetFeature.execute}"
+                             inlineStyle="height:80%" styleClass="remove_ul">
+              <amx:outputText value="Settings" id="ot10" inlineStyle="padding-left:10%"/>
+                  <amx:setPropertyListener id="spl4" from="#{'false'}"
+                                           to="#{applicationScope.OrdersManagedBean.springBoardStatus}" type="action"/>
+                  <amx:setPropertyListener id="spl1" to="#{pageFlowScope.FeatureId}" type="action"
+                                           from="com.company.myorders.Settings"/>
+              <amx:actionListener id="al5" binding="#{SlidingDrawerBean.leftPin}"/>
+            </amx:commandLink>
+          </amx:cellFormat>
+        </amx:rowLayout>
+        <amx:rowLayout id="rl6">
+          <amx:cellFormat id="cf10" width="20%" valign="middle" halign="center">
+            <amx:spacer id="s11" height="#{applicationScope.OrdersManagedBean.sbRowSpacer}"/>
+            <amx:image id="i5" source="/resources/css/images/About.png" styleClass="sbimages"
+                       inlineStyle="paddin-left:20%;"/>
+            <amx:spacer id="s12" height="#{applicationScope.OrdersManagedBean.sbRowSpacer}"/>
+          </amx:cellFormat>
+          <amx:cellFormat id="cf11" width="80%" halign="start">
+            <amx:commandLink id="cl6"
+                             inlineStyle="height:80%" styleClass="remove_ul">
+              <amx:outputText value="About" id="ot7" inlineStyle="padding-left:10%"/>
+                  <!--<amx:setPropertyListener id="spl6" from="#{'false'}"
+                                           to="#{applicationScope.OrdersManagedBean.springBoardStatus}" type="action"/>
+                  <amx:setPropertyListener id="spl5" to="#{pageFlowScope.FeatureId}" type="action"
+                                           from="{'com.company.myorders.Orders'}"/>-->
+            </amx:commandLink>
+          </amx:cellFormat>
+        </amx:rowLayout>
+        <amx:rowLayout id="rl8">
+          <amx:cellFormat id="cf14" width="20%" valign="middle" halign="center" inlineStyle="background-color:#ECECEC;">
+            <amx:spacer id="s15" height="#{applicationScope.OrdersManagedBean.sbRowSpacer}"/>
+            <amx:image id="i7" source="/resources/css/images/Sign out.png" styleClass="sbimages"
+                       inlineStyle="paddin-left:20%;"/>
+            <amx:spacer id="s16" height="#{applicationScope.OrdersManagedBean.sbRowSpacer}"/>
+          </amx:cellFormat>
+          <amx:cellFormat id="cf15" width="80%" halign="start" inlineStyle="background-color:#ECECEC;">
+            <amx:commandLink id="cl8" actionListener="#{applicationScope.OrdersManagedBean.Logout}"
+                             inlineStyle="height:80%" styleClass="remove_ul">
+              <amx:outputText value="Sign Out" id="ot9" inlineStyle="padding-left:10%"/>
+              <amx:actionListener id="al4" binding="#{SlidingDrawerBean.leftPin}"/>
+            </amx:commandLink>
+          </amx:cellFormat>
+        </amx:rowLayout>
+      </amx:tableLayout>
+      <amx:actionListener id="al1" binding="#{SlidingDrawerBean.leftPin}" type="swipeLeft"/>
+    </amx:commandLink>
+  </amx:panelPage>
+</amx:view>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfmf-skins xmlns="http://xmlns.oracle.com/adf/mf/skin">
+    <skin-addition id="s1">
+        <skin-id>mobileAlta-v1.4</skin-id>
+        <style-sheet-name>resources/css/MyOrdersSkin.css</style-sheet-name>
+    </skin-addition>
+    <skin-addition id="s2">
+        <skin-id>mobileAlta-v1.4.iOS</skin-id>
+        <style-sheet-name>resources/css/MyOrdersSkin-v1.css</style-sheet-name>
+    </skin-addition>
+</adfmf-skins>

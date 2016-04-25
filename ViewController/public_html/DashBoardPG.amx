@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+    <amx:panelPage id="pp1">
+        <amx:verbatim id="v1">
+        <![CDATA[
+        <html>
+    <body>
+    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+<script>
+jQuery(function($){
+
+$( 'html').on('keyup','#it2__inputElement',function() {
+ // alert("on keyup");
+  var searchVal=$('#it2__inputElement').val();
+ // alert( "Handler for .keydown() called. "+searchVal );
+  adf.mf.api.invokeMethod("com.company.myorders.mobile.OrdersManagedBean", "onKeyDownSearch",searchVal , onSuccess, onFail);
+});
+
+function onSuccess(request,response) { 
+// Process any return values that comes back in the "response" parameter 
+};
+
+function onFail(request, response) { 
+alert('error '+adf.mf.util.stringify(response)); 
+};
+
+});
+</script>
+</body>
+</html>
+]]>
+        </amx:verbatim>
+        <amx:facet name="header">
+            <amx:tableLayout id="tl1" width="100%">
+                <amx:rowLayout id="rl1">
+                    <amx:cellFormat id="cf2" valign="middle" width="100%" halign="center">
+                        <amx:panelGroupLayout id="pgl8" layout="vertical" halign="center" valign="middle">
+                            <amx:panelGroupLayout id="pgl2"
+                                                  rendered="#{!applicationScope.OrdersManagedBean.getSearchStatus}">
+                                <amx:outputText value="#{bindings.partyName.inputValue}" id="ot1"
+                                                inlineStyle="padding: 13px;"/>
+                            </amx:panelGroupLayout>
+                            <amx:panelGroupLayout id="pgl4"
+                                                  rendered="#{applicationScope.OrdersManagedBean.getSearchStatus}"
+                                                  layout="vertical" valign="middle" halign="center">
+                                <amx:inputText id="it2" hintText="Order Number" simple="true" inputType="number"/>
+                                <!--<amx:inputText id="it1" hintText="Order Number" value="#{bindings.searchValue.inputValue}"
+                               readOnly="#{!applicationScope.OrdersManagedBean.clearSearch}"/>-->
+                            </amx:panelGroupLayout>
+                        </amx:panelGroupLayout>
+                    </amx:cellFormat>
+                </amx:rowLayout>
+            </amx:tableLayout>
+        </amx:facet>
+        <amx:facet name="secondary">
+            <amx:panelGroupLayout id="pgl7" layout="vertical" halign="center" valign="middle">
+                <amx:panelGroupLayout id="pgl5" rendered="#{!applicationScope.OrdersManagedBean.getSearchStatus}"
+                                      halign="center" valign="middle">
+                    <amx:commandButton id="cb4" styleClass="iconstyle iconstyle-buttonBackground"
+                                       icon="/resources/css/images/Search.png">
+                        <amx:setPropertyListener id="spl6" type="action"
+                                                 to="#{applicationScope.OrdersManagedBean.getSearchStatus}"
+                                                 from="#{'true'}"/>
+                        <amx:setPropertyListener id="spl18" to="#{pageFlowScope.currentTab}" from="#{'ALL'}"/>
+                        <amx:setPropertyListener id="spl7" type="action"
+                                                 to="#{applicationScope.OrdersManagedBean.clearSearch}"
+                                                 from="#{'false'}"/>
+                        <!--<amx:image id="i3" source="/resources/css/images/Search.png"
+                     inlineStyle="padding-bottom:10px; padding-left:10px; padding-right:10px; padding-top:10px; max-height:24px; max-width:24px;"/>-->
+                    </amx:commandButton>
+                </amx:panelGroupLayout>
+                <amx:panelGroupLayout id="pgl6"
+                                      rendered="#{applicationScope.OrdersManagedBean.getSearchStatus &amp;&amp; applicationScope.OrdersManagedBean.clearSearch}"
+                                      valign="middle" halign="center">
+                    <amx:commandButton id="cb5" styleClass="iconstyle iconstyle-buttonBackground"
+                                       icon="/resources/css/images/Search.png">
+                        <amx:setPropertyListener id="spl20" type="action"
+                                                 to="#{applicationScope.OrdersManagedBean.clearSearch}"
+                                                 from="#{'false'}"/>
+                        <amx:setPropertyListener id="spl19" to="#{pageFlowScope.currentTab}" from="#{'ALL'}"/>
+                    </amx:commandButton>
+                </amx:panelGroupLayout>
+                <amx:panelGroupLayout id="pgl16" rendered="#{!applicationScope.OrdersManagedBean.clearSearch}"
+                                      halign="center" valign="middle">
+                    <amx:commandButton id="cb6"
+                                       styleClass="iconstyle iconstyle-buttonBackground"
+                                       icon="/resources/css/images/Clear Search icon.png"
+                                       action="#{bindings.findOrders.execute}"
+                                       actionListener="#{bindings.findAllOrders.execute}">
+                        <amx:setPropertyListener id="spl11" type="action"
+                                                 to="#{applicationScope.OrdersManagedBean.getSearchStatus}"
+                                                 from="#{'false'}"/>
+                        <amx:setPropertyListener id="spl12" type="action"
+                                                 to="#{applicationScope.OrdersManagedBean.clearSearch}"
+                                                 from="#{'true'}"/>
+                        <amx:setPropertyListener id="spl13" to="#{bindings.searchValue.inputValue}" from="#{''}"/>
+                        <amx:setPropertyListener id="spl21" from="#{'1'}" to="#{pageFlowScope.OrdersCount}"/>
+                        <amx:setPropertyListener id="spl22" from="#{'1'}" to="#{pageFlowScope.topOrdersCount}"/>
+                    </amx:commandButton>
+                </amx:panelGroupLayout>
+            </amx:panelGroupLayout>
+        </amx:facet>
+        <amx:commandLink id="cl8" styleClass="swippingArea">
+            <amx:panelStretchLayout id="psl1" styleClass="ordAppStretchLyt">
+                <amx:facet name="top">
+                    <amx:tableLayout id="tl2" width="100%"
+                                     inlineStyle="border-bottom-width:thin; background-color:rgb(60,60,73); ">
+                        <amx:rowLayout id="rl2">
+                            <amx:cellFormat id="cf4" width="50%"
+                                            inlineStyle="#{pageFlowScope.currentTab!='ALL' ?' border-bottom: 5px solid #1EBE92;' : 'border-bottom:none none none'}">
+                                <amx:commandButton text="Top 10 Orders" id="cb1"
+                                                   inlineStyle="width:100%; background-image:none; text-decoration:none solid White; color:White; box-shadow:none; "
+                                                   styleClass="tab_btn">
+                                    <amx:setPropertyListener id="spl1" from="#{'TOP'}"
+                                                             to="#{pageFlowScope.currentTab}"/>
+                                </amx:commandButton>
+                            </amx:cellFormat>
+                            <amx:cellFormat id="cf5" width="50%"
+                                            inlineStyle="#{pageFlowScope.currentTab=='ALL' ?' border-bottom: 5px solid #1EBE92;' : 'border-bottom:none none none'}">
+                                <amx:commandButton text="All Orders" id="cb2"
+                                                   inlineStyle="width:100%; background-image:none; text-decoration:none solid White; color:White; box-shadow:none;"
+                                                   styleClass="tab_btn">
+                                    <amx:setPropertyListener id="spl2" to="#{pageFlowScope.currentTab}"
+                                                             from="#{'ALL'}"/>
+                                </amx:commandButton>
+                            </amx:cellFormat>
+                        </amx:rowLayout>
+                    </amx:tableLayout>
+                </amx:facet>
+                <amx:facet name="center">
+                    <amx:refreshContainer id="rc1" busyText="Refreshing" pullText="Pull to Refresh"
+                                          actionListener="#{OrdersManagedBean.pullDownToRefreshAction}">
+                        <amx:commandLink id="cl7" styleClass="remove_ul">
+                            <amx:listView var="row" value="#{bindings.orders.collectionModel}"
+                                          fetchSize="#{bindings.orders.rangeSize}"
+                                          selectedRowKeys="#{bindings.orders.collectionModel.selectedRow}"
+                                          selectionListener="#{bindings.orders.collectionModel.makeCurrent}"
+                                          showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv1"
+                                          rendered="#{pageFlowScope.currentTab!='ALL'}"
+                                          inlineStyle="background-color:#D7D7DA">
+                                <amx:listItem id="li1"
+                                              inlineStyle="border-bottom-color:Grey;#{((row.rowKey)%2)==0?'background-color:#D7D7DA;':'background-color:#ECECEC;'}"
+                                              showLinkIcon="false" action="openDetail"
+                                              actionListener="#{OrdersManagedBean.getAlertCount}">
+                                    <amx:tableLayout id="tl3" width="100%">
+                                        <amx:rowLayout id="rl3">
+                                            <amx:cellFormat id="cf6" width="10px"/>
+                                            <amx:cellFormat id="cf7" width="90%">
+                                                <amx:panelGroupLayout id="pgl1" layout="vertical">
+                                                    <amx:spacer id="s1" height="10"/>
+                                                    <amx:panelGroupLayout id="pgl11" layout="horizontal">
+                                                        <amx:spacer id="s9" width="25"/>
+                                                        <amx:outputText value="Order Date : #{row.orderedDate}" id="ot2"
+                                                                        inlineStyle="width:auto; font-size:small; font-weight:bold;"/>
+                                                        <amx:spacer id="s5" width="10"/>
+                                                        <amx:outputText value=" PO# : #{row.custPoNumber}" id="ot5"
+                                                                        inlineStyle="width:auto; font-size:small; font-weight:bold;"
+                                                                        rendered="#{row.custPoNumber!=''}"/>
+                                                    </amx:panelGroupLayout>
+                                                    <amx:spacer id="s2" height="7"/>
+                                                    <amx:panelGroupLayout id="pgl9" layout="horizontal">
+                                                        <amx:spacer id="s7" width="25"/>
+                                                        <amx:outputText value="Order# #{row.orderNumber} " id="ot3"
+                                                                        inlineStyle="width:auto; font-size:small; font-weight:bold;"/>
+                                                        <amx:spacer id="s16" width="10"/>
+                                                        <amx:outputText value=" Amount: #{row.currencyCode} #{row.totalOrderedValue}"
+                                                                        id="ot14"
+                                                                        inlineStyle="width:auto; font-size:small; font-weight:bold;"/>
+                                                    </amx:panelGroupLayout>
+                                                    <amx:outputText value="Status #{row.flowStatusCode}" id="ot4"
+                                                                    inlineStyle="width:auto; font-size:small; font-weight:bold;"
+                                                                    rendered="false"/>
+                                                    <amx:image id="i1"
+                                                               source="/resources/css/images/#{row.flowStatusCode eq 'In Process' ? 'InProcess' : row.flowStatusCode}.png"
+                                                               inlineStyle="width:95%;"/>
+                                                </amx:panelGroupLayout>
+                                            </amx:cellFormat>
+                                            <amx:cellFormat id="cf10" width="15px" halign="center">
+                                                <amx:commandLink id="cl5" action="openDetail">
+                                                    <amx:outputHtml id="oh3" styleClass="fa fa-chevron-right fa-2g"
+                                                                    inlineStyle="color: rgb(157, 157, 173);"/>
+                                                </amx:commandLink>
+                                            </amx:cellFormat>
+                                        </amx:rowLayout>
+                                    </amx:tableLayout>
+                                    <!--<amx:showPopupBehavior id="spb1" type="tapHold" align="overlapMiddleCenter" alignId="pp1"
+                                         popupId="p1"/>-->
+                                    <amx:setPropertyListener id="spl5" from="#{row.flowStatusCode}"
+                                                             to="#{viewScope.flowStatusCode}" type="tapHold"/>
+                                    <amx:setPropertyListener id="spl8" from="#{row.orderedDate}"
+                                                             to="#{viewScope.orderedDate}" type="tapHold"/>
+                                    <amx:setPropertyListener id="spl9" from="#{row.orderNumber}"
+                                                             to="#{viewScope.orderNumber}" type="tapHold"/>
+                                    <amx:setPropertyListener id="spl10" from="#{row.totalOrderedValue}"
+                                                             to="#{viewScope.totalOrderedValue}" type="tapHold"/>
+                                    <amx:setPropertyListener id="spl14" from="#{''}"
+                                                             to="#{pageFlowScope.detailCurrentTab}"/>
+                                    <amx:setPropertyListener id="spl15" to="#{pageFlowScope.lineCurrentTab}"
+                                                             from="#{''}"/>
+                                </amx:listItem>
+                            </amx:listView>                            
+                            <amx:outputText value="Searched Order Not found" id="ot16"
+                                            rendered="#{pageFlowScope.topOrdersCount == 0 &amp;&amp; pageFlowScope.currentTab!='ALL'}"
+                                            inlineStyle="padding-top: 20px; padding-left: 45%; position: absolute; width:auto; font-size:small; font-weight:bold;"/>
+                            <amx:setPropertyListener id="spl3" to="#{pageFlowScope.currentTab}" from="#{'ALL'}"
+                                                     type="swipeLeft"/>
+                            <amx:actionListener id="al2" type="swipeRight" binding="#{SlidingDrawerBean.leftPin}"/>
+                        </amx:commandLink>
+                        <amx:commandLink id="cl9" styleClass="remove_ul">
+                            <amx:setPropertyListener id="spl4" from="#{'TOP'}" to="#{pageFlowScope.currentTab}"
+                                                     type="swipeRight"/>
+                            <amx:listView var="row" value="#{bindings.allOrders.collectionModel}"
+                                          fetchSize="#{bindings.allOrders.rangeSize}"
+                                          selectedRowKeys="#{bindings.allOrders.collectionModel.selectedRow}"
+                                          selectionListener="#{bindings.allOrders.collectionModel.makeCurrent}"
+                                          showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv2"
+                                          rendered="#{pageFlowScope.currentTab=='ALL'}"
+                                          inlineStyle="background-color:#D7D7DA">
+                                <amx:listItem id="li2"
+                                              inlineStyle="border-bottom-color:Grey;#{((row.rowKey)%2)==0?'background-color:#D7D7DA;':'background-color:#ECECEC;'}"
+                                              showLinkIcon="false" action="openDetail"
+                                              actionListener="#{OrdersManagedBean.getAlertCount}">
+                                    <amx:tableLayout id="tl4" width="100%">
+                                        <amx:rowLayout id="rl4">
+                                            <amx:cellFormat id="cf8" width="10px"/>
+                                            <amx:cellFormat id="cf9" width="90%">
+                                                <amx:panelGroupLayout id="pgl3" layout="vertical">
+                                                    <amx:spacer id="s3" height="10"/>
+                                                    <amx:panelGroupLayout id="pgl12" layout="horizontal">
+                                                        <amx:spacer id="s10" width="25"/>
+                                                        <amx:outputText value="Order Date : #{row.orderedDate}" id="ot8"
+                                                                        inlineStyle="width:auto; font-size:small; font-weight:bold;"/>
+                                                        <amx:spacer id="s17" width="10"/>
+                                                        <amx:outputText value=" PO# : #{row.custPoNumber}" id="ot15"
+                                                                        inlineStyle="width:auto; font-size:small; font-weight:bold;"
+                                                                        rendered="#{row.custPoNumber!=''}"/>
+                                                    </amx:panelGroupLayout>
+                                                    <amx:spacer id="s4" height="7"/>
+                                                    <amx:panelGroupLayout id="pgl10" layout="horizontal">
+                                                        <amx:spacer id="s8" width="25"/>
+                                                        <amx:outputText value="Order# #{row.orderNumber}" id="ot10"
+                                                                        inlineStyle="width:auto; font-size:small; font-weight:bold;"/>
+                                                        <amx:spacer id="s6" width="10"/>
+                                                        <amx:outputText value=" Amount: #{row.currencyCode} #{row.totalOrderedValue}"
+                                                                        id="ot6"
+                                                                        inlineStyle="width:auto; font-size:small; font-weight:bold;"/>
+                                                    </amx:panelGroupLayout>
+                                                    <amx:outputText value="Status #{row.flowStatusCode}" id="ot9"
+                                                                    inlineStyle="width:auto; font-size:small; font-weight:bold;"
+                                                                    rendered="false"/>
+                                                    <amx:image id="i2"
+                                                               source="/resources/css/images/#{row.flowStatusCode eq 'In Process' ? 'InProcess' : row.flowStatusCode}.png"
+                                                               inlineStyle="width:95%;"/>
+                                                </amx:panelGroupLayout>
+                                            </amx:cellFormat>
+                                            <amx:cellFormat id="cf11" width="15px" halign="center">
+                                                <amx:commandLink id="cl6" action="openDetail">
+                                                    <amx:outputHtml id="oh4" styleClass="fa fa-chevron-right fa-2g"
+                                                                    inlineStyle="color: rgb(157, 157, 173);"/>
+                                                </amx:commandLink>
+                                            </amx:cellFormat>
+                                        </amx:rowLayout>
+                                    </amx:tableLayout>
+                                    <amx:setPropertyListener id="spl16" from="#{''}"
+                                                             to="#{pageFlowScope.detailCurrentTab}"/>
+                                    <amx:setPropertyListener id="spl17" to="#{pageFlowScope.lineCurrentTab}"
+                                                             from="#{''}"/>
+                                </amx:listItem>
+                            </amx:listView>
+                            <amx:outputText value="Searched Order Not found" id="ot17"
+                                            rendered="#{pageFlowScope.OrdersCount == 0  &amp;&amp; pageFlowScope.currentTab=='ALL'}"
+                                            inlineStyle="padding-top: 20px; padding-left: 45%; position: absolute; width:auto; font-size:small; font-weight:bold;"/>
+                        </amx:commandLink>
+                    </amx:refreshContainer>
+                </amx:facet>
+                <amx:facet name="bottom">
+                    <amx:commandLink id="cl11" action="#{OrdersManagedBean.createFilter}">
+                        <amx:tableLayout id="tl6" width="100%" cellPadding="10"
+                                         inlineStyle="background-color:#{pageFlowScope.isFilterApplier == 'Y' ? '#1EBE92' : 'rgb(60,60,73)'};">
+                            <amx:rowLayout id="rl6">
+                                <amx:cellFormat id="cf14" width="100%" halign="center">
+                                    <amx:outputText value="#{pageFlowScope.isFilterApplier == 'Y' ? 'Clear Filters' : 'Filter'}" id="ot18"
+                                                    inlineStyle="color:White; font-weight:bold;"/>
+                                </amx:cellFormat>
+                            </amx:rowLayout>
+                        </amx:tableLayout>
+                    </amx:commandLink>
+                </amx:facet>
+            </amx:panelStretchLayout>
+        </amx:commandLink>
+        <amx:facet name="primary">
+            <amx:tableLayout id="tl7" width="100%" styleClass="appIconStyle">
+                <amx:rowLayout id="rl7">
+                    <amx:cellFormat id="cf1" valign="middle" width="100%">
+                        <!--<amx:commandLink actionListener="#{WindowBean.showSpringboard}" id="cl3"
+                                         rendered="#{applicationScope.isSprinboardOpen!='Y'}">
+                            <amx:image id="i5" source="/resources/css/images/Menu.png" styleClass="iconstyle"/>
+                        </amx:commandLink>
+                        <amx:commandLink actionListener="#{WindowBean.showSpringboard}" id="cl1"
+                                         rendered="#{applicationScope.isSprinboardOpen=='Y'}">
+                            <amx:image id="i6" source="/resources/css/images/Back.png" styleClass="iconstyle"/>
+                        </amx:commandLink>-->
+                        <amx:commandButton id="cb3"
+                                           icon="/resources/css/images/#{applicationScope.isSprinboardOpen eq 'Y' ? 'Back' : 'Menu'}.png"
+                                           actionListener="#{SlidingDrawerBean.leftPin}"
+                                           styleClass="iconstyle iconstyle-buttonBackground"/>
+                    </amx:cellFormat>
+                </amx:rowLayout>
+            </amx:tableLayout>
+        </amx:facet>
+    </amx:panelPage>
+    <amx:popup id="p1" autoDismiss="true" animation="slideUp" inlineStyle="width:80%;">
+        <amx:tableLayout id="tl5" width="100%">
+            <amx:rowLayout id="rl5">
+                <amx:cellFormat id="cf12" width="10px"/>
+                <amx:cellFormat id="cf13" width="90%">
+                    <amx:panelGroupLayout id="pgl13" layout="vertical">
+                        <amx:spacer id="s11" height="10"/>
+                        <amx:panelGroupLayout id="pgl14" layout="horizontal">
+                            <amx:spacer id="s12" width="25"/>
+                            <amx:outputText value="Order Date : #{viewScope.orderedDate}" id="ot7"
+                                            inlineStyle="width:auto; font-size:small; font-weight:bold;"/>
+                        </amx:panelGroupLayout>
+                        <amx:spacer id="s13" height="7"/>
+                        <amx:panelGroupLayout id="pgl15" layout="horizontal">
+                            <amx:spacer id="s14" width="25"/>
+                            <amx:outputText value="Order ##{viewScope.orderNumber} " id="ot11"
+                                            inlineStyle="width:auto; font-size:small; font-weight:bold;"/>
+                            <amx:spacer id="s15" width="10"/>
+                            <amx:outputText value=" Amount: $#{viewScope.totalOrderedValue}" id="ot12"
+                                            inlineStyle="width:auto; font-size:small; font-weight:bold;"/>
+                        </amx:panelGroupLayout>
+                        <amx:outputText value="Status #{viewScope.flowStatusCode}" id="ot13"
+                                        inlineStyle="width:auto; font-size:small; font-weight:bold;" rendered="false"/>
+                        <amx:image id="i8"
+                                   source="/resources/css/images/#{viewScope.flowStatusCode eq 'In Process' ? 'InProcess' : viewScope.flowStatusCode}.png"
+                                   inlineStyle="width:95%;"/>
+                    </amx:panelGroupLayout>
+                </amx:cellFormat>
+            </amx:rowLayout>
+        </amx:tableLayout>
+    </amx:popup>
+</amx:view>

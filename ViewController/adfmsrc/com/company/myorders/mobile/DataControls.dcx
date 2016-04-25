@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<DataControlConfigs xmlns="http://xmlns.oracle.com/adfm/configuration" version="12.1.3.13.26" id="DataControls"
+                    Package="com.company.myorders.mobile">
+  <AdapterDataControl id="ResultService" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDCDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="com.company.myorders.mobile.model.service.ResultService"
+                      BeanClass="com.company.myorders.mobile.model.service.ResultService"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <bean-definition BeanClass="com.company.myorders.mobile.model.service.ResultService"
+                       DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler" AccessMode="scrollable"
+                       EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="OrdersService" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDCDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="com.company.myorders.mobile.model.service.OrdersService"
+                      BeanClass="com.company.myorders.mobile.model.service.OrdersService"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="com.company.myorders.mobile.model.Orders"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="com.company.myorders.mobile.model.service.OrdersService"
+                       DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler" AccessMode="scrollable"
+                       EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="AllOrdersService"
+                      FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDCDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="com.company.myorders.mobile.model.service.AllOrdersService"
+                      BeanClass="com.company.myorders.mobile.model.service.AllOrdersService"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="com.company.myorders.mobile.model.AllOrders"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="com.company.myorders.mobile.model.service.AllOrdersService"
+                       DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler"
+                       AccessMode="scrollable" EagerPersist="false"
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+</DataControlConfigs>

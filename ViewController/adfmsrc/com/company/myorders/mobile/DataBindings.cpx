@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="12.1.3.13.26" id="DataBindings"
+             SeparateXMLFiles="false" Package="com.company.myorders.mobile" ClientType="Generic">
+  <pageMap>
+    <page path="/DashBoardPG.amx" usageId="com_company_myorders_mobile_DashBoardPGPageDef"/>
+    <page path="/com.company.myorders.Settings/Settings.amx" usageId="com_company_myorders_mobile_SettingsPageDef"/>
+    <page path="/com.company.myorders.SpringBoard/SpringBoard.amx"
+          usageId="com_company_myorders_mobile_SpringBoardPageDef"/>
+    <page path="/OrderDetails.amx" usageId="com_company_myorders_mobile_OrderDetailsPageDef"/>
+    <page path="/Details.amx" usageId="com_company_myorders_mobile_DetailsPageDef"/>
+    <page path="/OrderLines.amx" usageId="com_company_myorders_mobile_OrderLinesPageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="com_company_myorders_mobile_DashBoardPGPageDef"
+          path="com.company.myorders.mobile.pageDefs.DashBoardPGPageDef"/>
+    <page id="com_company_myorders_mobile_SettingsPageDef" path="com.company.myorders.Settings.SettingsPageDef"/>
+    <page id="com_company_myorders_mobile_SpringBoardPageDef"
+          path="com.company.myorders.SpringBoard.SpringBoardPageDef"/>
+    <page id="com_company_myorders_mobile_OrderDetailsPageDef"
+          path="com.company.myorders.mobile.pageDefs.OrderDetailsPageDef"/>
+    <page id="com_company_myorders_mobile_DetailsPageDef" path="com.company.myorders.mobile.pageDefs.DetailsPageDef"/>
+    <page id="com_company_myorders_mobile_OrderLinesPageDef"
+          path="com.company.myorders.mobile.pageDefs.OrderLinesPageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <dc id="AllOrdersService"
+        path="com.company.myorders.mobile.AllOrdersService"/>
+    <dc id="OrdersService" path="com.company.myorders.mobile.OrdersService"/>
+    <dc id="ResultService" path="com.company.myorders.mobile.ResultService"/>
+    <dc id="ApplicationFeatures" path="com.company.myorders.application.ApplicationFeatures"/>
+  </dataControlUsages>
+</Application>

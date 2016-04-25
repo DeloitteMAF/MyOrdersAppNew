@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.23.11" id="DetailsPageDef"
+                Package="com.company.myorders.mobile.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="AllOrdersService" id="AllOrdersServiceIterator"/>
+    <accessorIterator MasterBinding="AllOrdersServiceIterator" Binds="allOrders" RangeSize="25"
+                      DataControl="AllOrdersService" BeanClass="com.company.myorders.mobile.model.AllOrders"
+                      id="allOrdersIterator"/>
+    <iterator Binds="root" RangeSize="25" DataControl="OrdersService" id="OrdersServiceIterator"/>
+    <accessorIterator MasterBinding="OrdersServiceIterator" Binds="orders" RangeSize="25" DataControl="OrdersService"
+                      BeanClass="com.company.myorders.mobile.model.Orders" id="ordersIterator"/>
+    <accessorIterator MasterBinding="allOrdersIterator" Binds="xxMyOrderDetailsVO" RangeSize="25"
+                      DataControl="AllOrdersService" BeanClass="com.company.myorders.mobile.model.AllOrderDetails"
+                      id="xxMyOrderDetailsVOIterator1"/>
+    <accessorIterator MasterBinding="ordersIterator" Binds="xxMyOrderDetailsVO" RangeSize="25"
+                      DataControl="OrdersService" BeanClass="com.company.myorders.mobile.model.OrderDetails"
+                      id="xxMyOrderDetailsVOIterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="allOrdersIterator" id="orderNumber">
+      <AttrNames>
+        <Item Value="orderNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="allOrdersIterator" id="orderedDate">
+      <AttrNames>
+        <Item Value="orderedDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="allOrdersIterator" id="custPoNumber">
+      <AttrNames>
+        <Item Value="custPoNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="allOrdersIterator" id="flowStatusCode">
+      <AttrNames>
+        <Item Value="flowStatusCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="allOrdersIterator" id="totalOrderedValue">
+      <AttrNames>
+        <Item Value="totalOrderedValue"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ordersIterator" id="flowStatusCode1">
+      <AttrNames>
+        <Item Value="flowStatusCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ordersIterator" id="orderedDate1">
+      <AttrNames>
+        <Item Value="orderedDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ordersIterator" id="custPoNumber1">
+      <AttrNames>
+        <Item Value="custPoNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ordersIterator" id="totalOrderedValue1">
+      <AttrNames>
+        <Item Value="totalOrderedValue"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ordersIterator" id="orderNumber1">
+      <AttrNames>
+        <Item Value="orderNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="xxMyOrderDetailsVOIterator" id="xxMyOrderDetailsVO1">
+      <nodeDefinition DefName="com.company.myorders.mobile.model.OrderDetails" Name="xxMyOrderDetailsVO10">
+        <AttrNames>
+          <Item Value="lineNumber"/>
+          <Item Value="lineTotal"/>
+          <Item Value="orderedItem"/>
+          <Item Value="alertFlag"/>
+          <Item Value="lineStatus"/>
+          <Item Value="backorderQuantity"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="xxMyOrderDetailsVOIterator1" id="xxMyOrderDetailsVO">
+      <nodeDefinition DefName="com.company.myorders.mobile.model.AllOrderDetails" Name="xxMyOrderDetailsVO0">
+        <AttrNames>
+          <Item Value="lineNumber"/>
+          <Item Value="lineTotal"/>
+          <Item Value="orderedItem"/>
+          <Item Value="alertFlag"/>
+          <Item Value="lineStatus"/>
+          <Item Value="backorderQuantity"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

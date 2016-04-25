@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+  <amx:panelPage id="pp1" inlineStyle="background-color:#D7D7DA;">
+    <amx:facet name="header">
+      <amx:tableLayout id="tl1" width="100%">
+        <amx:rowLayout id="rl1">
+          <amx:cellFormat id="cf3" width="10px" halign="center" valign="middle"/>
+          <amx:cellFormat id="cf1" halign="center" valign="middle" width="20px">
+            <amx:commandButton id="cb1" icon="/resources/css/images/Back.png" action="back"
+                               styleClass="iconstyle iconstyle-buttonBackground"/>
+          </amx:cellFormat>
+          <amx:cellFormat id="cf2" valign="middle" width="100%" halign="center">
+            <amx:outputText value="Filters" id="ot4" inlineStyle="padding: 13px;"/>
+          </amx:cellFormat>
+        </amx:rowLayout>
+      </amx:tableLayout>
+    </amx:facet>
+    <amx:panelStretchLayout id="psl1">
+      <amx:facet name="top"/>
+      <amx:facet name="center">
+      <amx:tableLayout id="tl4" width="100%" inlineStyle="background-color:#ECECEC;" cellPadding="10">
+      <amx:rowLayout id="rl5">
+        <amx:cellFormat id="cf10" width="10px"/>
+        <amx:cellFormat id="cf12" width="50%">
+          <amx:outputText value="Order Number" id="ot5" inlineStyle="font-size:small;"/>
+        </amx:cellFormat>
+        <amx:cellFormat id="cf11" width="50%">
+          <amx:inputText id="it1" simple="true" value="#{pageFlowScope.fOrderNo}"/>
+        </amx:cellFormat>
+      </amx:rowLayout>
+    </amx:tableLayout>
+    <amx:tableLayout id="tl5" width="100%"  cellPadding="10">
+      <amx:rowLayout id="rl6">
+        <amx:cellFormat id="cf13" width="10px"/>
+        <amx:cellFormat id="cf14" width="50%">
+          <amx:outputText value="Order Value" id="ot6" inlineStyle="font-size:small;"/>
+        </amx:cellFormat>
+        <amx:cellFormat id="cf15" width="50%">
+          <amx:inputText id="it4" simple="true" value="#{pageFlowScope.fOrderValue}"/>
+        </amx:cellFormat>
+      </amx:rowLayout>
+    </amx:tableLayout>
+     <amx:tableLayout id="tl6" width="100%" inlineStyle="background-color:#ECECEC;" cellPadding="10">
+      <amx:rowLayout id="rl7">
+        <amx:cellFormat id="cf16" width="10px"/>
+        <amx:cellFormat id="cf18" width="50%">
+          <amx:outputText value="PO Number" id="ot7" inlineStyle="font-size:small;"/>
+        </amx:cellFormat>
+        <amx:cellFormat id="cf17" width="50%">
+          <amx:inputText id="it5" simple="true" value="#{pageFlowScope.fPO}"/>
+        </amx:cellFormat>
+      </amx:rowLayout>
+    </amx:tableLayout>
+     <amx:tableLayout id="tl3" width="100%"  cellPadding="10">
+      <amx:rowLayout id="rl3">
+        <amx:cellFormat id="cf5" width="10px"/>
+        <amx:cellFormat id="cf6" width="50%">
+          <amx:outputText value="Status" id="ot2" inlineStyle="font-size:small;"/>
+        </amx:cellFormat>
+        <amx:cellFormat id="cf7" width="50%">
+              <amx:selectOneChoice id="soc1" value="#{pageFlowScope.fStatus}">
+              <amx:selectItem id="si1" label="Choose Status" value=""/>
+                <amx:selectItem id="si8" label="Entered" value="Entered"/>
+                <amx:selectItem id="si2" label="Booked" value="Booked"/>
+                <amx:selectItem id="si3" label="In Process" value="In Process"/>
+                <amx:selectItem id="si4" label="Shipped" value="Shipped"/>
+                <amx:selectItem id="si5" label="Delivered" value="Delivered"/>
+                <amx:selectItem id="si6" label="Returned" value="Returned"/>
+                <amx:selectItem id="si7" label="Cancelled" value="Cancelled"/>
+              </amx:selectOneChoice>
+            </amx:cellFormat>
+      </amx:rowLayout>
+    </amx:tableLayout>
+      </amx:facet>
+      <amx:facet name="bottom">
+        <amx:commandLink id="cl2" action="#{OrdersManagedBean.applyFilters}">
+          <amx:tableLayout id="tl2" width="100%" cellPadding="10" inlineStyle="background-color:rgb(60,60,73);">
+            <amx:rowLayout id="rl2">
+              <amx:cellFormat id="cf4" width="100%" valign="middle" halign="center">
+                <amx:outputText value="Apply Filter" id="ot1" inlineStyle="color:White; font-weight:bold;"/>
+              </amx:cellFormat>
+            </amx:rowLayout>
+          </amx:tableLayout>
+        </amx:commandLink>
+      </amx:facet>
+    </amx:panelStretchLayout>
+  </amx:panelPage>
+</amx:view>

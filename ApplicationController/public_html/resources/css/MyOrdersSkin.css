@@ -1,0 +1,204 @@
+@charset "windows-1252";
+
+@import url('../font-awesome-4.3.0/css/font-awesome.min.css');
+
+@import url('../font-awesome-4.3.0/css/font-awesome.css');
+
+
+#it1__inputElement {
+
+}
+#oh2{
+    color:rgb(60, 60, 73);
+}
+
+#oh1{
+    color:rgb(60, 60, 73);
+}
+
+/* Android Title bar styling begin */
+.amx-panelPage-header-appIcon {
+    /*background-image: url("images/Icon.png");
+    border-bottom-color: #81bc00;
+    background-color: #002776;*/
+    display:none;
+}
+
+.amx-panelPage-header{
+    border-bottom-color: #1EBE92; 
+    background-color:#1EBE92;    
+    color: #1EBE92;
+    font-size: large; 
+    font-weight: bold; 
+    font-family: 'Arial Black';
+}
+
+.amx-panelPage-header .amx-outputText  {
+    color: #FFFFFF;
+    font-size: large; 
+    font-weight: bold; 
+    font-family: 'Arial Black';
+}
+/* Android Title bar styling end */
+
+
+.amx-panelPage-content > .amx-outputText {
+    color: #002776;
+    text-align: center;
+    font: 16px Arial,Helvetica,Sans-serif;
+    font-size: large; 
+    font-weight: 400; 
+}
+
+.ot1  {
+    color: red;
+    text-align: center;
+    font: 12px Arial,Helvetica,Sans-serif;
+    font-weight: 100; 
+}
+
+.amx-panelPage-header-overflowIcon{
+    display:none;
+}
+
+.tab_btn > .amx-commandButton-label{
+    color: #FFFFFF;
+    font-size: 15px;
+}
+
+.detailhead{
+    color:#414042;
+    width:auto;
+    font-size:1em;
+}
+
+.detailimages{
+    height:50%;
+    width:40%;
+    padding-left:5%;
+}
+
+.sbimages{
+    height:50%;
+    width:75%;
+}
+
+.sbheader{
+    width:auto;
+    color:#2f3661;
+    font-size:1em;
+    font-weight:bold;    
+}
+
+.sbheader1{
+    width:auto;
+    color:#2f3661;
+    font-size:0.7em;
+    padding-bottom:10%;
+}  
+
+.value{
+    width:auto;
+    color:#6d6e71;
+    font-size:1em;
+    font-weight:bold;
+}
+
+.remove_ul {
+text-decoration: none;
+padding: 0px !important;
+}
+
+.iconstyle text{
+    color:#ffffff;
+}
+.iconstyle label{
+    color:#ffffff; 
+}
+.iconstyle-buttonBackground{
+    background: #1EBE92;
+}
+.iconstyle-buttonBackground:active{
+    background: #1EBE92;
+}
+
+.ordAppStretchLyt .amx-panelStretchLayout_center{
+    overflow: auto;
+}
+
+/* Same padding for LTR & RTL but for specificity, we are adding html[dir] to the selector */
+html[dir="ltr"] .amx-panelFormLayout.amx-label-position-topStart .field-value,
+html[dir="ltr"] .amx-panelFormLayout.amx-label-position-topCenter .field-value,
+html[dir="ltr"] .amx-panelFormLayout.amx-label-position-topEnd .field-value {
+    padding: 0px 10px 10px 5px;
+}
+
+.lovPopUp{
+    left:20%!important;
+    padding:2px;
+}
+
+.otValue{
+    Font-Family:Helvetica;
+    Font-Size:12px;
+    Color:#6d6e71;
+}
+
+.otLabelBackorder{
+    Font-Family:Helvetica;
+    Font-Size:12px;
+    Color:#c0392b;
+}
+
+.otLabelHeader{
+    /*Padding-top:11px;*/
+    Font-Family:Helvetica;
+    Font-Weight:bold;
+    Font-Size:12px;
+    Color:#414042;
+}
+
+.otLabel{
+    Font-Family:Helvetica;
+    Font-Size:12px;
+    Color:#414042;
+}
+
+.otAlert{
+    color: white;
+    position: absolute;
+    left: 63%;
+    top: 13%;
+    z-index: 1;
+    background: #1EBE92;
+    height: 20px;
+    width: 20px;
+    text-align: center;
+    border-radius: 25px;
+    font-size: x-small;
+    line-height: 226%;
+}
+*:focus {
+    outline: none;
+    outline-style:none;
+    box-shadow:none;
+    border-color:transparent;
+   }
+   
+.amx-commandButton.amx-selected {
+    outline: none;
+    outline-style:none;
+    box-shadow:none;
+    border-color:transparent;
+    background-color:transparent;
+    background-image:none;
+   }
+.swippingArea{
+    height: 98%;
+}
+.amx-panelPage-facet-primary{
+    width:10%;
+}
+.appIconStyle{
+    padding-left: 10px;
+}

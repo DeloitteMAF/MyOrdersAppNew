@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfmf:features xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:adfmf="http://xmlns.oracle.com/adf/mf">
+  <adfmf:feature id="com.company.myorders.Orders" name="My Orders" securityEnabled="true"
+                 image="resources/css/images/My orders.png">
+    <adfmf:content id="com.company.myorders.Orders.1" image="resources/css/images/My orders.png">
+      <adfmf:amx file="com.company.myorders.Orders/ViewController-task-flow.xml#ViewController-task-flow">
+        <adfmf:includes>
+          <adfmf:include type="JavaScript" file="resources/NavigationHandler.js" id="i6"/>
+        </adfmf:includes>
+      </adfmf:amx>
+    </adfmf:content>
+  </adfmf:feature>
+  <adfmf:feature id="com.company.myorders.Settings" name="Settings" securityEnabled="true"
+                 image="resources/css/images/Settings.png">
+    <adfmf:content id="com.company.myorders.Settings.1" image="resources/css/images/Settings.png">
+      <adfmf:amx file="com.company.myorders.Settings/Settings.amx">
+        <adfmf:includes>
+          <adfmf:include type="JavaScript" file="resources/NavigationHandler.js" id="i4"/>
+          <adfmf:include type="JavaScript" file="resources/js/CustomEvent.js" id="i8"/>
+        </adfmf:includes>
+      </adfmf:amx>
+    </adfmf:content>
+  </adfmf:feature>
+  <adfmf:feature id="SpringBoard" name="SpringBoard" securityEnabled="true">
+    <adfmf:content id="com.company.myorders.SpringBoard.1">
+      <adfmf:constraints/>
+      <adfmf:amx file="com.company.myorders.SpringBoard/SpringBoard.amx">
+        <adfmf:includes>
+          <adfmf:include type="JavaScript" file="resources/NavigationHandler.js" id="i5"/>
+        </adfmf:includes>
+      </adfmf:amx>
+    </adfmf:content>
+  </adfmf:feature>
+  <adfmf:feature id="com.company.myorders.Search" name="Search" securityEnabled="true">
+    <adfmf:content id="com.company.myorders.Search.1">
+      <adfmf:amx file="com.company.myorders.Search/Search.amx">
+        <adfmf:includes/>
+      </adfmf:amx>
+    </adfmf:content>
+  </adfmf:feature>
+</adfmf:features>

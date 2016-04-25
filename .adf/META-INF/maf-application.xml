@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfmf:application xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:adfmf="http://xmlns.oracle.com/adf/mf"
+                   version="1.0" name="MyOrders" id="com.company.MyOrders" appControllerFolder="ApplicationController"
+                   listener-class="com.company.myorders.application.LifeCycleListenerImpl">
+  <adfmf:featureReference refId="com.company.myorders.Orders" id="fr1" loginConnRefId="MyOrderAppAuth"/>
+  <adfmf:featureReference refId="com.company.myorders.Settings" id="fr2" loginConnRefId="MyOrderAppAuth"/>
+  <adfmf:featureReference refId="SpringBoard" id="fr3" showOnNavigationBar="false"
+                          showOnSpringboard="false" loginConnRefId="MyOrderAppAuth"/>
+  <adfmf:featureReference refId="com.company.myorders.Search" id="fr4" loginConnRefId="MyOrderAppAuth"/>
+  <adfmf:preferences>
+    <adfmf:preferenceGroup id="userPref">
+      <adfmf:preferenceText id="location" default="US" secret="false" label="Location"/>
+      <adfmf:preferenceText id="showclosedorders" label="Show Closed Orders"
+                            default="No"/>
+      <adfmf:preferenceText id="orderby" label="Order By" default="datedesc"/>
+      <adfmf:preferenceText id="locationName" label="Location Full Name" default="United States"/>
+      <adfmf:preferenceNumber id="dateRange" label="Date Range" default="-1"/>
+      <adfmf:preferenceText id="datetype" label="Date Type" default="OrderedDate"/>
+    </adfmf:preferenceGroup>
+  </adfmf:preferences>
+  <adfmf:navigation>
+    <adfmf:springboard enabled="false" showSpringboardAtStartup="false" displayGotoSpringboardControl="false"
+                       width="200"/>
+    <adfmf:navigationBar enabled="false"/>
+  </adfmf:navigation>
+  <adfmf:login defaultConnRefId="MyOrderAppAuth">
+    <adfmf:localHTML url="MyOrdersLogin.html"/>
+  </adfmf:login>
+  <!--Remote URL WhiteList is no longer supported by MAF.
+Please delete this commented section after reviewing it.
+-->
+  <!--<adfmf:remoteURLWhiteList>
+    <adfmf:domain id="d1">code.jquery.com</adfmf:domain>
+  </adfmf:remoteURLWhiteList>-->
+</adfmf:application>

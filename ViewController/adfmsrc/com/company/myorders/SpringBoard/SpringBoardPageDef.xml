@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.23.11" id="SpringBoardPageDef"
+                Package="com.company.myorders.SpringBoard">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="OrdersService" id="OrdersServiceIterator"/>
+    <accessorIterator MasterBinding="OrdersServiceIterator" Binds="orders" RangeSize="25" DataControl="OrdersService"
+                      BeanClass="com.company.myorders.mobile.model.Orders" id="ordersIterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="ordersIterator" id="partyName">
+      <AttrNames>
+        <Item Value="partyName"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="resetFeature" RequiresUpdateModel="true" Action="invokeMethod" MethodName="resetFeature"
+                  IsViewObjectMethod="false" DataControl="ApplicationFeatures"
+                  InstanceName="data.ApplicationFeatures.dataProvider">
+      <NamedData NDName="fid" NDValue="#{pageFlowScope.FeatureId}" NDType="java.lang.String"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>
