@@ -289,6 +289,7 @@ public void callButtonActionJS(String btn) {
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.fOrderValue}",null);
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.fPO}",null);
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.fStatus}",null);
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.fAlert}",null);
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.isFilterApplier}","N");
             try {
                 List pnames = new ArrayList();

@@ -30,6 +30,7 @@
          <directMapping attributeName="totalOrderedValue" payloadAttributeName="TotalOrderedValue" columnName="TOTAL_ORDERED_VALUE" columnDataType="VARCHAR" required="false" persisted="true" javaType="java.lang.String" keyAttribute="false"/>
          <directMapping attributeName="headerId" payloadAttributeName="HeaderId" columnName="HEADER_ID" columnDataType="NUMERIC" required="false" persisted="true" javaType="java.math.BigDecimal" keyAttribute="false"/>
          <directMapping attributeName="currencyCode" payloadAttributeName="CurrencyCode" columnName="CURRENCY_CODE" columnDataType="VARCHAR" required="false" persisted="true" javaType="java.lang.String" keyAttribute="false"/>
+         <directMapping attributeName="OrderAlertFlag" payloadAttributeName="OrderAlertFlag" columnName="ORDER_ALERT_FLAG" columnDataType="VARCHAR" required="false" persisted="true" javaType="java.lang.String" keyAttribute="false"/>
          <oneToManyMapping attributeName="xxMyOrderDetailsVO" payloadAttributeName="XxMyOrderDetailsVO" referenceClassName="com.company.myorders.mobile.model.OrderDetails" sendAsArrayIfOnlyOneEntry="true">
             <foreignKeyColumnReference sourceTable="ORDER_DETAILS" sourceColumn="HEADER_ID" targetTable="ORDERS" targetColumn="HEADER_ID"/>
          </oneToManyMapping>
@@ -59,6 +60,7 @@
          <directMapping attributeName="totalOrderedValue" payloadAttributeName="TotalOrderedValue" columnName="TOTAL_ORDERED_VALUE" columnDataType="VARCHAR" required="false" persisted="true" javaType="java.lang.String" keyAttribute="false"/>
          <directMapping attributeName="headerId" payloadAttributeName="HeaderId" columnName="HEADER_ID" columnDataType="NUMERIC" required="false" persisted="true" javaType="java.math.BigDecimal" keyAttribute="false"/>
          <directMapping attributeName="currencyCode" payloadAttributeName="CurrencyCode" columnName="CURRENCY_CODE" columnDataType="VARCHAR" required="false" persisted="true" javaType="java.lang.String" keyAttribute="false"/>
+         <directMapping attributeName="OrderAlertFlag" payloadAttributeName="OrderAlertFlag" columnName="ORDER_ALERT_FLAG" columnDataType="VARCHAR" required="false" persisted="true" javaType="java.lang.String" keyAttribute="false"/>
          <oneToManyMapping attributeName="xxMyOrderDetailsVO" payloadAttributeName="XxMyOrderDetailsVO" referenceClassName="com.company.myorders.mobile.model.AllOrderDetails" sendAsArrayIfOnlyOneEntry="true">
             <foreignKeyColumnReference sourceTable="ALL_ORDER_DETAILS" sourceColumn="HEADER_ID" targetTable="ALL_ORDERS" targetColumn="HEADER_ID"/>
          </oneToManyMapping>

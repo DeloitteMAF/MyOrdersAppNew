@@ -72,6 +72,21 @@
             </amx:cellFormat>
       </amx:rowLayout>
     </amx:tableLayout>
+      <amx:tableLayout id="tl7" width="100%"  cellPadding="10">
+      <amx:rowLayout id="rl4">
+        <amx:cellFormat id="cf8" width="10px"/>
+        <amx:cellFormat id="cf9" width="50%">
+          <amx:outputText value="Show Alert Orders" id="ot3" inlineStyle="font-size:small;"/>
+        </amx:cellFormat>
+        <amx:cellFormat id="cf19" width="50%">
+              <amx:selectOneChoice id="soc2" value="#{pageFlowScope.fAlert}">
+                <amx:selectItem id="si12" label="All" value=""/>
+                <amx:selectItem id="si9" label="Yes" value="Y"/>
+                <amx:selectItem id="si11" label="No" value="N"/>
+              </amx:selectOneChoice>
+            </amx:cellFormat>
+      </amx:rowLayout>
+    </amx:tableLayout>
       </amx:facet>
       <amx:facet name="bottom">
         <amx:commandLink id="cl2" action="#{OrdersManagedBean.applyFilters}">

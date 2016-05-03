@@ -36,6 +36,7 @@
           <Item Value="isNewEntity"/>
           <Item Value="partyName"/>
           <Item Value="currencyCode"/>
+          <Item Value="orderAlertFlag"/>
         </AttrNames>
       </nodeDefinition>
     </tree>
@@ -52,6 +53,7 @@
           <Item Value="totalOrderedValue"/>
           <Item Value="headerId"/>
           <Item Value="currencyCode"/>
+          <Item Value="orderAlertFlag"/>
         </AttrNames>
       </nodeDefinition>
     </tree>

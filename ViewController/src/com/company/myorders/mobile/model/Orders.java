@@ -5,6 +5,9 @@ import com.company.myorders.mobile.model.utility.OrdersUtilityBean;
 import java.util.Arrays;
 import java.util.List;
 
+import oracle.adfmf.java.beans.PropertyChangeListener;
+import oracle.adfmf.java.beans.PropertyChangeSupport;
+
 import oracle.ateam.sample.mobile.v2.persistence.util.EntityUtils;
 import oracle.ateam.sample.mobile.v2.persistence.manager.DBPersistenceManager;
 import oracle.ateam.sample.mobile.v2.persistence.model.Entity;
@@ -28,8 +31,10 @@ public class Orders extends Entity {
     private String totalOrderedValue;
     private BigDecimal headerId;
     private String currencyCode;
+    private String orderAlertFlag;
 
     private List<OrderDetails> xxMyOrderDetailsVO = createIndirectList("xxMyOrderDetailsVO");
+    private PropertyChangeSupport _propertyChangeSupport = new PropertyChangeSupport(this);
 
 
     public String getOrderNumber() {
@@ -137,4 +142,21 @@ public class Orders extends Entity {
     }
 
 
+    public void setOrderAlertFlag(String orderAlertFlag) {
+        String oldOrderAlertFlag = this.orderAlertFlag;
+        this.orderAlertFlag = orderAlertFlag;
+        _propertyChangeSupport.firePropertyChange("orderAlertFlag", oldOrderAlertFlag, orderAlertFlag);
+    }
+
+    public void addPropertyChangeListener(PropertyChangeListener l) {
+        _propertyChangeSupport.addPropertyChangeListener(l);
+    }
+
+    public void removePropertyChangeListener(PropertyChangeListener l) {
+        _propertyChangeSupport.removePropertyChangeListener(l);
+    }
+
+    public String getOrderAlertFlag() {
+        return orderAlertFlag;
+    }
 }

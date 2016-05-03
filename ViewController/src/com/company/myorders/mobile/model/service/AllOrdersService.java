@@ -74,7 +74,8 @@ public class AllOrdersService extends EntityCRUDService<AllOrders> {
             String orderNo = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.fOrderNo}");
             String item = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.fOrderValue}");
             String po = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.fPO}");
-            String status = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.fStatus}");       
+            String status = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.fStatus}");
+            String alert = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.fAlert}");
             if(orderNo!=null){
                 allOrderRow=allOrderRow.filter(allOrdersNew -> allOrdersNew.getOrderNumber().startsWith(orderNo));
             }else if(item!=null){
@@ -83,6 +84,8 @@ public class AllOrdersService extends EntityCRUDService<AllOrders> {
                 allOrderRow=allOrderRow.filter(allOrdersNew -> allOrdersNew.getCustPoNumber().startsWith(po));
             }else if(status!=null){
                 allOrderRow=allOrderRow.filter(allOrdersNew -> allOrdersNew.getFlowStatusCode().equalsIgnoreCase(status));
+            }else if(alert!=null){
+                allOrderRow=allOrderRow.filter(allOrdersNew -> allOrdersNew.getOrderAlertFlag().equalsIgnoreCase(alert));
             }  
             List<AllOrders> allOrdersList=allOrderRow.collect(Collectors.toList());
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.OrdersCount}", allOrdersList.size());
